@@ -1,6 +1,6 @@
 from django import forms
-from django.forms import ModelForm,widgets
-from .models import usuario
+from django.forms import ModelForm, fields,widgets
+from .models import Producto, usuario,Contacto
 
 class UsuarioForm(ModelForm):
     class Meta:
@@ -39,3 +39,22 @@ class UsuarioForm(ModelForm):
 
             
         }
+class ContactoForm(forms.ModelForm):
+
+
+
+    class Meta:
+        model = Contacto
+        fields =["nombre", "correo", "tipo_consulta", "mensaje"]
+    
+
+class ProductoForm(forms.ModelForm):
+
+    class Meta:
+        model = Producto
+        fields = '__all__'   
+
+        widgets = {
+        "fecha_fabricacion": forms.SelectDateWidget() 
+        } 
+
